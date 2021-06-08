@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+
+body {
+    --color-even: #590d0d; /* even line color */
+    --color-odd: #ab1818; /* odd line color */
+    --color-month: #000; /* month color */
+    background-color:white;
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 0;
+    line-height: 1.42857143;
+    overflow: auto;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: normal;
+    color: var(--color-month);
+    font-size: 5vw;
+    Font-family: "Gentium Basic", serif;
+}
+a {
+    color: var(--color-even);
+    font-size: 3.5vw;
+    }
+h4 {
+    display: block;
+    margin: 0 0 0;
+    font-weight: bold;
+}
+
+h1 {
+    display: inline;
+    color: var(--color-even);
+}
+
+div {
+    display: block;
+    font-size: 3.5vw;
+}
+
+p {
+    display: inline;
+    position: relative;
+    font-size: 3.5vw;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin: 0 0 0;
+}
+
+.list-group {
+
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    color: var(--color-even);
+    border-radius: 10px;
+    font-family: Roboto, sans-serif;
+}
+
+.list-group-item:nth-child(odd) {
+    color: var(--color-odd);
+    font-family: Roboto, sans-serif;
+    /*background:white;
+    position:relative;
+    display:block;
+    padding:5px;
+    margin-bottom:5px;
+    border:3px solid gray;
+    border-radius: 10px;*/
+}
+
+.content {
+    background: transparent;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.breadcrumb {
+    list-style: none;
+    background-color: transparent;
+    border-radius: 4px
+}
+
+.breadcrumb>li {
+    display: inline-block
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0"
+}
+
+.breadcrumb>.active {
+    color: #777
+}
+
+.header {
+    color: #FFFFFF;
+    background: transparent;
+}
+
+.header-tableview {
+    color: var(--color-even);
+}
+
+.titleMonth {
+    font-family: Lora, serif;
+    font-size: 4.5vw;
+    font-weight: bold;
+    line-height: 1.25;
+}
+
+.numberDate {
+    font-family: Lora, serif;
+    font-size: 4.5vw;
+}
+
+
+.subtitle {
+    color: #CAC1C1;
+    font-size: 3vw;
+}
+
+.info {
+    vertical-align: center;
+}
+
+.nsl:after {
+    content: "Nostra Signora di Lourdes";
+    color: #CAC1C1;
+    font-size: 3.5vw;
+    word-wrap: break-word;
+    /*padding-left: 32px; */
+
+}
+
+.sb:after {
+    content: "Santa Bernadette";
+    color: #CAC1C1;
+    font-size: 3.5vw;
+    word-wrap: break-word;
+    /*padding-left: 32px; */
+}
+
+.portuense:after {
+    content: "casa Portuense";
+    color: #CAC1C1;
+    font-size: 3.5vw;
+    word-wrap: break-word;
+    /*padding-left: 32px; */
+}
+
+.loader {
+    border: 16px solid #ab1818;
+    border-radius: 50%;
+    border-top: 16px solid #d4d4d4;
+    width: 70px;
+    height: 70px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-viewport {
+    width: device-width
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2.5px grey; 
+  border-radius: 50px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ab1818; }
+   .TA {
+        scrollbar-3dlight-color:#ab1818;
+        scrollbar-arrow-color:#ab1818;
+        scrollbar-base-color:#ab1818;
+        scrollbar-darkshadow-color:grey;
+        scrollbar-face-color:#ab1818;
+        scrollbar-highlight-color:#ab1818;
+        scrollbar-shadow-color:grey
+    }
+/*p {
+    color: red;
+} */
+</style>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Lora%3A400%2C400italic%2C700%2C700italic%7CGentium%20Basic%3A400%2C400italic%2C700%2C700italic" rel="stylesheet" type="text/css">  
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:300,400,500,700|Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+  
+    <pre id="content"></pre>
+
+    <div class="loader" id="loaderObj"></div>
+       <script type="text/javascript">
+
+      // Client ID and API key from the Developer Console
+      var API_KEY = 'AIzaSyClNUulbSgGJsmnPxB6OugvIWlSp4F5nBQ';
+
+        // Caldar id
+      var CALENDAR_ID = 'usd246.org_slumra4qppmbh251f54ano453g@group.calendar.google.com';
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+
+      var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      var authorizeButton = document.getElementById('authorize-button');
+      var signoutButton = document.getElementById('signout-button');
+
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        //gapi.load('client:auth2', initClient);
+        gapi.load('client',initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: DISCOVERY_DOCS
+        }).then(function () {
+
+          listUpcomingEvents();
+        });
+      }
+
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+
+        var iDiv = document.createElement('li');
+        iDiv.id = 'block';
+        iDiv.className = 'list-group-item';
+        iDiv.textContent = message;
+        pre.appendChild(iDiv);
+      }
+
+      function createMonthBlock(divContainer, singleDiv){
+        divContainer.appendChild(singleDiv);
+      }
+
+             
+      function createSingleDiv(event){
+
+        var iDiv = document.createElement('li');
+        iDiv.id = 'block';
+        iDiv.className = 'list-group-item';
+    
+        var numb = document.createElement('b');
+        numb.className = 'numberDate';
+        var when = event.start.dateTime;
+        var finish;
+         var date = new Date(event.start.dateTime);
+             var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ampm; 
+
+        if (!when) {
+          var date = new Date(event.start.date);
+          when = date.getDate(); //+ ' ' + date.getHours() % 12 || 12 + ':' + date.getMinutes(); 
+
+          var finishDate = new Date(event.end.date);
+          finish = finishDate.getDate();
+            strTime = ' ';    
+        }else{
+          var date = new Date(event.start.dateTime);
+          when = date.getDate(); //+ ' ' + date.getHours() % 12 || 12 + ':' + date.getMinutes(); 
+          var finishDate = new Date(event.end.dateTime);
+          finish = finishDate.getDate(); 
+         }
+
+        if(when === finish)
+          numb.textContent = when;
+        else if (finish -1 == when)
+            numb.textContent = finish;
+        else
+          numb.textContent = when +1 + '-' + finish;
+          
+        
+
+
+        var subtitleLocation = document.createElement('p');
+        subtitleLocation.className = 'subtitle';
+        subtitleLocation.textContent = event.location;
+
+        var divContent = document.createElement('p');
+        divContent.textContent = ' ' + strTime + ' ' + event.summary;
+        
+        iDiv.appendChild(numb);
+        iDiv.appendChild(divContent);
+        //iDiv.appendChild(subtitleLocation);
+
+        return iDiv;
+      }
+
+      function createHeaderMonth(month) {
+        var pre = document.getElementById('content');
+
+        var ol = document.createElement('ol');
+        ol.className = 'breadcrumb';
+
+        var liObj = document.createElement('li');
+        liObj.className = 'numberDate';
+        liObj.textContent = month;
+        
+        ol.appendChild(liObj);
+
+        pre.appendChild(ol);
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      function listUpcomingEvents() {
+
+        var currentMonth;
+        var tempMonth;
+
+        var currentYear;
+        var tempYear;
+
+        gapi.client.calendar.events.list({
+          'calendarId': CALENDAR_ID,
+          'timeMin': (new Date()).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true,
+          'maxResults': 25,
+          'orderBy': 'startTime'
+        }).then(function(response) {
+
+          var events = response.result.items;
+
+          if (events.length > 0) {
+            for (i = 0; i < events.length; i++) {
+              var event = events[i];
+              var when = event.start.dateTime;
+
+              if (!when) {
+                var date = new Date(event.start.date);
+                tempMonth = date.getMonth();
+                tempYear = date.getFullYear();
+                when = event.start.dateTime;
+              }else{
+                var date = new Date(event.start.dateTime);
+                tempMonth = date.getMonth();
+                tempYear = date.getFullYear();
+              }
+
+              var pre = document.getElementById('content');
+              var divContainer; //Month Blocks
+              var divListGroup;
+              var hMonth; //Month Text
+              var ul; //Events Block
+
+             /* if(tempYear != currentYear){
+                currentYear = tempYear;
+                createHeaderMonth(currentYear);
+              }*/
+
+              if(tempMonth != currentMonth){
+                currentMonth = tempMonth;
+              
+                divContainer = document.createElement('div');
+                divContainer.className = 'container';
+
+                divListGroup = document.createElement('div');
+                divListGroup.className = 'list-group';
+
+                hMonth = document.createElement('h4');
+                hMonth.className = 'list-group-item-heading titleMonth';
+
+                hMonth.textContent = monthNames[currentMonth] + ' ' + tempYear;
+
+                ul = document.createElement('ul');
+                ul.className = 'list-group';
+
+                divListGroup.appendChild(hMonth);
+                divListGroup.appendChild(ul);
+                ul.appendChild(createSingleDiv(event));
+                divContainer.appendChild(divListGroup);
+
+                pre.appendChild(divContainer);
+
+              }else{
+                ul.appendChild(createSingleDiv(event));
+              }//end month
+            }//end for
+          } else {
+            appendPre('No upcoming events found.');
+          }
+          closeLoader();
+        });
+      }
+
+      function closeLoader() 
+      {
+          document.getElementById("loaderObj").style.display = "none";
+      }
+
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
